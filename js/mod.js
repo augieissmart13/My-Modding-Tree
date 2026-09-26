@@ -1,5 +1,5 @@
 let modInfo = {
-	name: "The ??? Tree",
+	name: "The Hierarchy Tree",
 	author: "nobody",
 	pointsName: "points",
 	modFiles: ["layers.js", "tree.js"],
@@ -42,6 +42,28 @@ function getPointGen() {
 		return new Decimal(0)
 
 	let gain = new Decimal(1)
+	if(hasUpgrade('a',11)) gain = gain.times(1.5)
+	if(hasUpgrade('a',12)) gain = gain.times(1.75)
+	if(hasUpgrade('a',13)) gain = gain.times(2)
+	if(hasUpgrade('a',14)) gain = gain.times(2.5)
+	if(hasUpgrade('a',21)) gain = gain.times(3)
+	if(hasUpgrade('a',22)) gain = gain.times(3.5)
+	if(hasUpgrade('a',23)) gain = gain.times(4)
+	if(hasUpgrade('a',24)) gain = gain.times(5)
+	if(hasUpgrade('a',31)) gain = gain.times(7.5)
+	if(hasUpgrade('a',32)) gain = gain.times(10)
+	if(hasUpgrade('a',33)) gain = gain.times(13)
+	if(hasUpgrade('a',34)) gain = gain.times(20)
+	
+	if(hasUpgrade('b',11)) gain = gain.times(2.5)
+	if(hasUpgrade('b',12)) gain = gain.times(5)
+	if(hasUpgrade('b',13)) gain = gain.times(10)
+	if(hasUpgrade('b',14)) gain = gain.times(20)
+	
+	if (tmp.a && tmp.a.effect) {
+        gain = gain.times(tmp.a.effect)
+    }
+
 	return gain
 }
 
